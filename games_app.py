@@ -9,7 +9,6 @@ from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
-import numpy as np
 import dash_bootstrap_components as dbc
 from dash import dash_table
 
@@ -28,7 +27,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 server = app.server
 
 
-years_set = set(games_data['Year'].unique())
+years_set = set(games_data.loc[13].unique())
 
 # Interactive Chart Dataframe
 df = games_data[games_data['Platform Types'].str.contains('Console')]
