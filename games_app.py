@@ -9,6 +9,7 @@ from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
+import numpy as np
 import dash_bootstrap_components as dbc
 from dash import dash_table
 
@@ -27,7 +28,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 server = app.server
 
 
-years_set = set([2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022])
+years_set = set(games_data['Year'].unique())
 
 # Interactive Chart Dataframe
 df = games_data[games_data['Platform Types'].str.contains('Console')]
@@ -40,7 +41,7 @@ df1['Percentage of Games Released'] = [(x / y)
 
 
 # Interactive Table Dataframe
-df2 = df.to_dict('records')
+df2 = df.to_dict('records')gtrretr
 
 # Interactive chart
 fig = px.bar(df1, x = 'Year' , y = 'Percentage of Games Released')
