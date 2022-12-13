@@ -18,7 +18,7 @@ game_platforms = pd.read_csv('game_platforms_updated.csv')
 game_stores = pd.read_csv('game_stores.csv')
 game_genres = pd.read_csv('game_genres.csv')
 game_tags = pd.read_csv('game_tags.csv')
-years_summary = pd.read_csv('years_summary.csv')
+years_summary = pd.read_csv('years_summary.csv', index_col=(0))
 
 
 stylesheet = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -200,19 +200,13 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             dash_table.DataTable(df2, id = 'dtbl',
-                                 columns = [{"name": 'Year', "id": 'Year', 'type':'numeric'},
-                                            {"name": 'Release Date', "id": 'Release Date', 'type':'datetime'},
+                                 columns = [{"name": 'Release Date', "id": 'Release Date', 'type':'datetime'},
                                             {"name": 'Game', "id": 'Game Name', 'type':'text'},
-                                            {"name": 'Rating', "id": 'Rating', 'type':'numeric'},
-                                            {"name": 'Ratings Count', "id": 'Ratings Count', 'type':'numeric'},
-                                            {"name": 'ESRB Rating', "id": 'ESRB Rating', 'type':'numeric'},
                                             {"name": 'Platforms', "id": 'Platforms', 'type':'text'},
                                             {"name": 'Platform Types', "id": 'Platform Types', 'type':'text'},
                                             {"name": 'Stores', "id": 'Stores', 'type':'text'},
                                             {"name": 'Genres', "id": 'Genres', 'type':'text'},
                                             {"name": 'Tags', "id": 'Tags', 'type':'text'},
-                                            {"name": 'Avg Playtime', "id": 'Avg Playtime', 'type':'numeric'},
-                                            {"name": 'Website', "id": 'Link', 'presentation':'markdown'},
                                             ],
                                  filter_action = 'native',
                                  page_action = 'native',
@@ -224,7 +218,7 @@ app.layout = dbc.Container([
                                  style_cell={'textAlign': 'left', 
                                             'minWidth': '80px', 
                                             'width': '100px', 
-                                            'maxWidth': '500px', 
+                                            'maxWidth': '400px', 
                                             'whiteSpace':'normal', 
                                             'height':'auto'}),
             ], width = 12, align = 'start'),
@@ -238,28 +232,65 @@ app.layout = dbc.Container([
             html.H3('References:',
                     style={"font-weight": "bold"}),
             html.H6('RAWG Database and Game API Information:'),
-            html.A('https://rawg.io/',
-                   href='https://rawg.io/',
-                   target='_blank'),
-            ], width = 6),
+            html.A(['The Biggest Video Game Database on RAWG - Video Game Discovery Service', 
+                    html.Br()], href='https://rawg.io/', target='_blank'),
+            html.A('Explore RAWG Video Games Database API • RAWG',
+                   href = 'https://rawg.io/apidocs',target='_blank')
+            ], width = 12),
             ],justify = 'left'),
     
+    html.Br(),
     dbc.Row([
         dbc.Col([
-            html.A('https://rawg.io/apidocs',
-                   href = 'https://rawg.io/apidocs',
-                   target='_blank')
+            html.H6('Plotly Dash Libraries and documentations:'),
+            html.A(['Layout in Python',html.Br()],
+                   href='https://plotly.com/python/reference/layout/',target='_blank'),
+            html.A(['Dropdown | Dash for Python Documentation | Plotly',html.Br()],
+                   href='https://dash.plotly.com/dash-core-components/dropdown',target='_blank'),
+            html.A(['Setting the font, title, legend entries, and axis titles in Python',html.Br()],
+                   href='https://plotly.com/python/figure-labels/',target='_blank'),
+            html.A(['Dash DataTable | Dash for Python Documentation | Plotly',html.Br()],
+                   href='https://dash.plotly.com/datatable'),
+            html.A(['Sorting, Filtering, Selecting, and Paging Natively | Dash for Python Documentation | Plotly ',html.Br()],
+                   href='https://dash.plotly.com/datatable/interactivity'),
+            html.A(['DataTable Width & Column Width | Dash for Python Documentation | Plotly',html.Br()],
+                   href='https://dash.plotly.com/datatable/width'),
+            html.A(['Dash DataTable | Dash for Python Documentation | Plotly',html.Br()],
+                  href='https://dash.plotly.com/datatable'),
+            html.A(['https://dash.plotly.com/datatable/reference',html.Br()],
+                   href='Reference | Dash for Python Documentation | Plotly '),
+            html.A(['Themes - dbc docs',html.Br()],
+                   href='https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/',
+                   target='_blank'),
+            html.A(['Table - dbc docs',html.Br()],
+                   href='https://dash-bootstrap-components.opensource.faculty.ai/docs/components/table/',
+                   target='_blank'),
             ], width = 12),
             ],justify = 'left'),
     html.Br(),
     dbc.Row([
         dbc.Col([
-            html.H6('Plotly Dash Libraries and documentations:'),
-            html.A('https://plotly.com/python/reference/layout/',
-                   href='https://plotly.com/python/reference/layout/',
+            html.H6('Design Ideas and Troubleshooting'),
+            html.A(['Design my Dash App Layout - YouTube',html.Br()],
+                   href='https://www.youtube.com/watch?v=1nEL0S8i2Wk',
                    target='_blank'),
-            ], width = 6),
-            ],justify = 'left'),
+            html.A(['How to Format the Dash DataTable - YouTube',html.Br()],
+                   href='https://www.youtube.com/watch?v=S8ZcErBpfYE',
+                   target='_blank'),
+            html.A(['Themes - dbc docs',html.Br()],
+                   href='https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/',
+                   target='_blank'),
+            html.A(['R: How to stop rounding percentages to 0 decimal places on plotly chart? - Stack Overflow',html.Br()],
+                   href='https://stackoverflow.com/questions/68007438/r-how-to-stop-rounding-percentages-to-0-decimal-places-on-plotly-chart',
+                   target='_blank'),
+            html.A(['Datatable how to scroll X (horizontal) - Dash Python - Plotly Community Forum',html.Br()],
+                   href='https://community.plotly.com/t/datatable-how-to-scroll-x-horizontal/15604',
+                   target='_blank'),
+            html.A(['How to wrap text in cell in dash_table - Dash Python - Plotly Community Forum ',html.Br()],
+                   href='https://community.plotly.com/t/how-to-wrap-text-in-cell-in-dash-table/15687/7',
+                   target='_blank'),
+            ], width = 12),
+            ],justify = 'left')
     
     ])
 
