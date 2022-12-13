@@ -260,12 +260,6 @@ def update_dataframe(category, sub_category):
     df = games_data[games_data[category].str.contains(str(sub_category))]
     df1 = df.groupby(df['Release Date'].dt.strftime('%Y'))['Game Name'].count().reset_index()
     df1.rename(columns = {"Game Name": "Number of Games"}, inplace = True)
-    df1['Percentage of Games Released'] = [(x / y)
-                                           for x, y in 
-                                           zip(df1['Number of Games'],
-                                              years_summary['Number of Games'])]
-    
-    
     missing_years = years_set.difference(set(df1['Release Date'].unique()))
     
     if missing_years != set():
@@ -274,6 +268,14 @@ def update_dataframe(category, sub_category):
             df1 = pd.concat([df1,pd.DataFrame(new_row, index=[0])], ignore_index=True)
     
     df1 = df1.sort_values(by=['Release Date'])
+    
+    df1['Percentage of Games Released'] = [(x / y)
+                                           for x, y in 
+                                           zip(df1['Number of Games'],
+                                              years_summary['Number of Games'])]
+    
+    
+
     
     title = ''
     
