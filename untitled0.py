@@ -124,9 +124,9 @@ app.layout =html.Div([
         
         # Summary table
 
-           """ html.Div(table, id='table',
+            html.Div(table, id='table',
                      style={'width' : '100%',"text-align": "center"}),
-            html.Br(),""",
+            html.Br(),
                     
         # Select categories and sub-categories
             html.Br(),
