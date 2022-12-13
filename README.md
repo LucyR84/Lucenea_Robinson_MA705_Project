@@ -35,7 +35,7 @@ https://api.rawg.io/api/games
 ### Other Comments
 1. 2022 has data up to December 2, 2022
 2. Some duplicates were due to extra calls made for January 24, 2022 and February 11, 2022, which were due to page limit restrictions
-3. Folders with JSON files are zipped due to size #####ASK Prof if needed####
+3. Could not add JSON files due to large size of them (even after zipped) and need space to add my final master dataframe
 4. User Discretion Advised: There are many games rated for mature audiences and so names may contain inappropriate language.
 
 *Other Sources*
