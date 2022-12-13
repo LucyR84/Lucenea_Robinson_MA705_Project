@@ -13,7 +13,7 @@ import dash_bootstrap_components as dbc
 from dash import dash_table
 
 
-games_data = pd.read_csv('https://media.githubusercontent.com/media/LucyR84/Lucenea_Robinson_MA705_Project/main/rawg_games_Final3.csv')
+games_data = pd.read_csv('https://github.com/LucyR84/Lucenea_Robinson_MA705_Project/blob/main/rawg_games_Final3.csv?raw=true')
 game_platforms = pd.read_csv('game_platforms_updated.csv')
 game_stores = pd.read_csv('game_stores.csv')
 game_genres = pd.read_csv('game_genres.csv')
