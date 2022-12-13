@@ -27,7 +27,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 server = app.server
 
 
-years_set = set(games_data.iloc[:,13].unique())
+years_set = set(games_data['Year'].unique())
 
 # Interactive Chart Dataframe
 df = games_data[games_data['Platform Types'].str.contains('Console')]
