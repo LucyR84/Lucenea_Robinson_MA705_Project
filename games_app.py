@@ -5,9 +5,7 @@ Created on Sat Dec 10 10:04:24 2022
 @author: Lucy
 """
 
-import dash
-from dash import dcc
-from dash import html
+from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
@@ -15,18 +13,17 @@ import dash_bootstrap_components as dbc
 from dash import dash_table
 
 
-
-games_data = pd.read_csv("rawg_games_Final.csv")
-game_platforms = pd.read_csv('game_platforms_updated.csv')
-game_stores = pd.read_csv('game_stores.csv')
-game_genres = pd.read_csv('game_genres.csv')
-game_tags = pd.read_csv('game_tags.csv')
-years_summary = pd.read_csv('year_summary.csv')
+games_data = pd.read_csv("C:/Users/Lucy/Spyder/MA705/Individual Project/rawg_games_Final.csv")
+game_platforms = pd.read_csv('/Users/Lucy/Spyder/MA705/Individual Project/game_platforms_updated.csv')
+game_stores = pd.read_csv('/Users/Lucy/Spyder/MA705/Individual Project/game_stores.csv')
+game_genres = pd.read_csv('/Users/Lucy/Spyder/MA705/Individual Project/game_genres.csv')
+game_tags = pd.read_csv('/Users/Lucy/Spyder/MA705/Individual Project/game_tags.csv')
+years_summary = pd.read_csv('/Users/Lucy/Spyder/MA705/Individual Project/year_summary.csv')
 
 
 stylesheet = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
+app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 server = app.server
 
 
