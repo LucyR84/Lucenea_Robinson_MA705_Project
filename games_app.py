@@ -36,7 +36,7 @@ df1.rename(columns = {"Game Name": "Number of Games"}, inplace = True)
 df1['Percentage of Games Released'] = [(x / y) 
                                        for x, y in 
                                        zip(df1['Number of Games'],
-                                           years_summary.iloc[:,1])]
+                                           years_summary['Number of Games Released'])]
 
 
 # Interactive Table Dataframe
