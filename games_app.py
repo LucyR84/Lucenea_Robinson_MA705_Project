@@ -13,7 +13,7 @@ import dash_bootstrap_components as dbc
 from dash import dash_table
 
 
-games_data = pd.read_csv('rawg_games_Final.zip')
+games_data = pd.read_csv('rawg_games_Final3.csv')
 game_platforms = pd.read_csv('game_platforms_updated.csv')
 game_stores = pd.read_csv('game_stores.csv')
 game_genres = pd.read_csv('game_genres.csv')
@@ -200,19 +200,13 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             dash_table.DataTable(df2, id = 'dtbl',
-                                 columns = [{"name": 'Year', "id": 'Year', 'type':'numeric'},
-                                            {"name": 'Release Date', "id": 'Release Date', 'type':'datetime'},
+                                 columns = [{"name": 'Release Date', "id": 'Release Date', 'type':'datetime'},
                                             {"name": 'Game', "id": 'Game Name', 'type':'text'},
-                                            {"name": 'Rating', "id": 'Rating', 'type':'numeric'},
-                                            {"name": 'Ratings Count', "id": 'Ratings Count', 'type':'numeric'},
-                                            {"name": 'ESRB Rating', "id": 'ESRB Rating', 'type':'numeric'},
                                             {"name": 'Platforms', "id": 'Platforms', 'type':'text'},
                                             {"name": 'Platform Types', "id": 'Platform Types', 'type':'text'},
                                             {"name": 'Stores', "id": 'Stores', 'type':'text'},
                                             {"name": 'Genres', "id": 'Genres', 'type':'text'},
                                             {"name": 'Tags', "id": 'Tags', 'type':'text'},
-                                            {"name": 'Avg Playtime', "id": 'Avg Playtime', 'type':'numeric'},
-                                            {"name": 'Website', "id": 'Link', 'presentation':'markdown'},
                                             ],
                                  filter_action = 'native',
                                  page_action = 'native',
@@ -258,8 +252,24 @@ app.layout = dbc.Container([
             html.A('https://plotly.com/python/reference/layout/',
                    href='https://plotly.com/python/reference/layout/',
                    target='_blank'),
+            html.A('hhttps://dash.plotly.com/dash-core-components/dropdown',
+                   href='https://dash.plotly.com/dash-core-components/dropdown',
+                   target='_blank'),
             ], width = 6),
             ],justify = 'left'),
+   
+    dbc.Row([
+        dbc.Col([
+            html.H6('Troubleshooting and Design Ideas'),
+            html.A('https://www.youtube.com/watch?v=1nEL0S8i2Wk',
+                   href='https://www.youtube.com/watch?v=1nEL0S8i2Wk',
+                   target='_blank'),
+            html.A('https://www.youtube.com/watch?v=1nEL0S8i2Wk',
+                   href='https://www.youtube.com/watch?v=1nEL0S8i2Wk',
+                   target='_blank'),
+            ], width = 6),
+            ],justify = 'left'),
+    
     
     ])
 
