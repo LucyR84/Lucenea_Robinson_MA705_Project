@@ -18,7 +18,7 @@ game_platforms = pd.read_csv('game_platforms_updated.csv')
 game_stores = pd.read_csv('game_stores.csv')
 game_genres = pd.read_csv('game_genres.csv')
 game_tags = pd.read_csv('game_tags.csv')
-years_summary = pd.read_csv('year_summary.csv')
+years_summary = pd.read_csv('years_summary.csv')
 
 
 stylesheet = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -64,10 +64,6 @@ fig = px.bar(df1, x = 'Release Date' , y = 'Percentage of Games Released')
 subcategory_list = game_platforms['Type'].unique().tolist()
 
 # add percentage increase column 
-years_summary['Percentage Increase'] = [f'{0:.2%}' if x == 0 
-                                        else f'''{((years_summary.iloc[x,1] - years_summary.iloc[(x-1),1]) / 
-                                              years_summary.iloc[(x-1),1]):.2%}'''
-                                        for x in range(len(years_summary)) ]
 
 table = generate_table(years_summary)
 
@@ -77,7 +73,7 @@ app.layout =html.Div([
                     style={"font-weight": "bold",
                            'font-size':50,
                            'color':'#3A84CA'}),
-            html.H5('MA 705 Dashboard Final Project | Lucenea Robinson'),
+            html.Div([html.H5('MA 705 Dashboard Final Project | Lucenea Robinson'),
             html.H6("About", style={"font-weight": "bold"}),
             html.H6("""
                     This dashboard explores what trends are happening in the game industry by visualizing 
@@ -124,13 +120,13 @@ app.layout =html.Div([
                     Then, from the second dropdown menu choose a sub-category. You can select or
                     type in the dropdown to search for a category/subcategory. Note: Chart will be 
                     blank until a sub-category is chosen.
-                    """),
+                    """)]),
         
         # Summary table
 
-            html.Div(table, id='table',
+           """ html.Div(table, id='table',
                      style={'width' : '100%',"text-align": "center"}),
-            html.Br(),
+            html.Br(),""",
                     
         # Select categories and sub-categories
             html.Br(),
