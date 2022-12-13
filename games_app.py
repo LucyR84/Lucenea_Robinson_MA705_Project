@@ -41,7 +41,7 @@ df1['Percentage of Games Released'] = [(x / y)
 
 
 # Interactive Table Dataframe
-df2 = df.to_dict('records')gtrretr
+df2 = df.to_dict('records')
 
 # Interactive chart
 fig = px.bar(df1, x = 'Year' , y = 'Percentage of Games Released')
