@@ -15,5 +15,5 @@ years_summary['Percentage Increase'] = [f'{0:.2%}' if x == 0
                                               years_summary.iloc[(x-1),1]):.2%}'''
                                         for x in range(len(years_summary)) ]
                                         
-                                        
+years_summary.rename(columns = {"Number of Games Released": "Number of Games"}, inplace = True)                        
 years_summary.to_csv('years_summary.csv')
