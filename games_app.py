@@ -26,12 +26,12 @@ stylesheet = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 server = app.server
 
-
-years_set = set(games_data['Year'].unique())
+games_data['Release Date']= pd.to_datetime(games_data['Release Date'])
+years_set = set(games_data['Release Date'].dt.strftime('%Y').unique())
 
 # Interactive Chart Dataframe
 df = games_data[games_data['Platform Types'].str.contains('Console')]
-df1 = df.groupby(['Year'])['Game Name'].count().reset_index()
+df1 = df.groupby(df['Release Date'].dt.strftime('%Y'))['Game Name'].count().reset_index()
 df1.rename(columns = {"Game Name": "Number of Games"}, inplace = True)
 df1['Percentage of Games Released'] = [(x / y) 
                                        for x, y in 
@@ -43,7 +43,7 @@ df1['Percentage of Games Released'] = [(x / y)
 df2 = df.to_dict('records')
 
 # Interactive chart
-fig = px.bar(df1, x = 'Year' , y = 'Percentage of Games Released')
+fig = px.bar(df1, x = 'Release Date' , y = 'Percentage of Games Released')
 
 
 
@@ -298,7 +298,7 @@ def update_sub_category(category):
 
 def update_dataframe(category, sub_category):
     df = games_data[games_data[category].str.contains(str(sub_category))]
-    df1 = df.groupby(['Year'])['Game Name'].count().reset_index()
+    df1 = df.groupby(df['Release Date'].dt.strftime('%Y'))['Game Name'].count().reset_index()
     df1.rename(columns = {"Game Name": "Number of Games"}, inplace = True)
     df1['Percentage of Games Released'] = [(x / y)
                                            for x, y in 
@@ -306,14 +306,14 @@ def update_dataframe(category, sub_category):
                                               years_summary['Number of Games Released'])]
     
     
-    missing_years = years_set.difference(set(df1['Year'].unique()))
+    missing_years = years_set.difference(set(df1['Release Date'].unique()))
     
     if missing_years != set():
         for year in missing_years:
-            new_row = {'Year':year,'Number of Games':0, 'Percentage of Games Released':0}
+            new_row = {'Release Date':year,'Number of Games':0, 'Percentage of Games Released':0}
             df1 = pd.concat([df1,pd.DataFrame(new_row, index=[0])], ignore_index=True)
     
-    df1 = df1.sort_values(by=['Year'])
+    df1 = df1.sort_values(by=['Release Date'])
     
     title = ''
     
@@ -333,7 +333,7 @@ def update_dataframe(category, sub_category):
          title = ('The Percentage of Yearly Games Released that have Tag: '
          + str(sub_category))
     
-    fig = px.bar(df1, x = 'Year' , y = 'Percentage of Games Released' 
+    fig = px.bar(df1, x = 'Release Date' , y = 'Percentage of Games Released' 
                  )
     fig.update_layout(
         title={'text':title},
