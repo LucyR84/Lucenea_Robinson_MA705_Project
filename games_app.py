@@ -88,7 +88,7 @@ app.layout = dbc.Container([
                     However, the data for 2022 only goes up to December 2, 2022, which means 
                     there could still be a positive increase considering there is an average of about 14,000 
                     games released each month. With this upward trend, the dashboard explores what other 
-                    possible trends might surround genres, platforms, platform types, stores, and game tags. 
+                    possible trends might surround genres, platforms, platform types, and stores. 
                     Each of these categories is further divided into sub-categories. This is because games 
                     can be available in multiple sub-categories and a comparison between genres would be 
                     misleading if a game falls in both categories. With this in mind, the chart below was 
@@ -148,7 +148,7 @@ app.layout = dbc.Container([
                            'justify':'left'}),
             
             dcc.Dropdown(['Platform Types', 'Platforms', 
-                          'Stores', 'Genres', 'Tags'], 
+                          'Stores', 'Genres'], 
                                   'Platform Types', 
                                   searchable = True,
                                   id='category',
@@ -174,9 +174,9 @@ app.layout = dbc.Container([
             html.H6("""Note 2: The sub-category dropdown and Chart may take a few seconds to update 
                     due to the large dataset.""", 
                      style={"font-weight":"bold", "font-size":12}),
-            html.H6(["""Note 3: For the Tags category many of the tags are only for one game. Therefore,
-                      the sub-category list is ordered by frequency of the tag. For easy viewing see full
-                      list """, html.A('here.',
+            html.H6(["""Note 3: Due to the magnitude of the number of tags and limitations in parsing, Tags was
+                    excluded from the dropdown menu. Table can be filtered for tags. See full list of tags
+                    """, html.A('here.',
                            href = 'https://media.githubusercontent.com/media/LucyR84/Lucenea_Robinson_MA705_Project/64ac3c19c28d26b070670d42f3ba3e1c824c4ff3/game_tags.csv',
                            target='_blank')], 
                      style={"font-weight":"bold", "font-size":12})
@@ -318,9 +318,6 @@ def update_sub_category(category):
 
     elif category == 'Genres':
         sub_category_list = game_genres['Genres'].unique().tolist()
-
-    elif category == 'Tags':
-        sub_category_list = game_tags['Tags'].unique().tolist()
 
     return sub_category_list
 
