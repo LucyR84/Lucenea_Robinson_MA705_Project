@@ -363,9 +363,6 @@ def update_dataframe(category, sub_category):
     elif category == 'Stores':
          title = ('The Percentage of Yearly Games Released that are Available at Store: '
          + str(sub_category))
-    elif category == 'Tags':
-         title = ('The Percentage of Yearly Games Released that have Tag: '
-         + str(sub_category))
     
     fig = px.bar(df1, x = 'Release Date' , y = 'Percentage of Games Released' 
                  )
