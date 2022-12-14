@@ -175,7 +175,7 @@ app.layout = dbc.Container([
                     due to the large dataset.""", 
                      style={"font-weight":"bold", "font-size":12}),
             html.H6(["""Note 3: Due to the magnitude of the number of tags and limitations in parsing, Tags was
-                    excluded from the dropdown menu. Table can be filtered for tags. See full list of tags
+                    excluded from the dropdown menu. Table categories can be filtered. See full list of tags
                     """, html.A('here.',
                            href = 'https://media.githubusercontent.com/media/LucyR84/Lucenea_Robinson_MA705_Project/64ac3c19c28d26b070670d42f3ba3e1c824c4ff3/game_tags.csv',
                            target='_blank')], 
