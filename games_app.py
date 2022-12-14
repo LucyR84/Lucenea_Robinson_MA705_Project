@@ -94,7 +94,7 @@ app.layout = dbc.Container([
                     misleading if a game falls in both categories. With this in mind, the chart below was 
                     designed to show how represented games are for a given subcategory and how has the 
                     representation changed year over year. The table below the chart shows the name and 
-                    other details of the games that fall within the chosen parameters.
+                    categories info of the games that fall within the chosen parameters.
                      
                     """,),
             html.H6(["""
@@ -173,6 +173,12 @@ app.layout = dbc.Container([
                      style={"font-weight":"bold", "font-size":12}),
             html.H6("""Note 2: The sub-category dropdown and Chart may take a few seconds to update 
                     due to the large dataset.""", 
+                     style={"font-weight":"bold", "font-size":12}),
+            html.H6(["""Note 3: For the Tags category many of the tags are only for one game. Therefore,
+                      the sub-category list is ordered by frequency of the tag. For easy viewing see full
+                      list """, html.A('here.',
+                           href = 'https://media.githubusercontent.com/media/LucyR84/Lucenea_Robinson_MA705_Project/64ac3c19c28d26b070670d42f3ba3e1c824c4ff3/game_tags.csv',
+                           target='_blank')], 
                      style={"font-weight":"bold", "font-size":12})
             
             ], width = 3, align = 'start'),
